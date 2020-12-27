@@ -22,6 +22,7 @@
 # “количество”: [5, 2, 7],
 # “ед”: [“шт.”]
 # }
+from collections import defaultdict
 
 class Products:
     _products = []
@@ -29,22 +30,20 @@ class Products:
     def add(self, product):
         self._products.append((len(self._products), product))
 
-    def __repr__(self):
+    def __str__(self):
         res = ''
         for elem in self._products:
             res += f"{elem}"
         return f"{res}"
 
-    def getAnanlitics(self):
-        res = {}
+    def get_analytics(self):
+        res = defaultdict(list)
         for elem in self._products:
             target_product = elem[1]
             for key in sorted(target_product):
-                value = res.get(key, False)
-                if value:
-                    value.append(target_product[key])
-                else:
-                    res.update({key: [target_product[key]]})
+                value = res[key]
+                value.append(target_product[key])
+
         return res
 
 
@@ -55,8 +54,7 @@ try:
 except:
     print('Entered value inst int type')
 
-i = 0
-while i < count:
+for i in range(0, count):
     print(f"Enter data for {i + 1} product")
     name = input('Enter products name: ')
     cost = input('Enter products cost: ')
@@ -65,4 +63,5 @@ while i < count:
     products.add({"name": name, "cost": cost, "amount": amount, "unit": unit})
     i += 1
 
-print(products.getAnanlitics())
+print(products.get_analytics())
+print(products.get_analytics2())

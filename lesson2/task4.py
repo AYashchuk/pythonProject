@@ -5,11 +5,10 @@
 
 words = input('Enter words: ')
 
-wordsList = words.split(' ')
+words_list = words.split(' ')
 
-print(wordsList)
+print(words_list)
 
-i = 0
-while i < len(wordsList):
-    print(wordsList[i]) if len(wordsList[i]) < 10 else print(wordsList[i][0:10])
-    i += 1
+
+for index, value in enumerate(words_list):
+    print(words_list[index][0:10])

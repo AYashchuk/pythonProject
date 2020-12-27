@@ -11,14 +11,13 @@ except:
     print('Entered value inst int type')
 
 array = [0] * length
-i = 0
-while i < length:
+
+for index in range(0, len(array)):
     try:
-        array[i] = int(input(f"Enter value for index - {i}: "))
+        array[index] = int(input(f"Enter value for index - {index}: "))
     except:
-        array[i] = -1
-    if i % 2 != 0:
-        array[i - 1], array[i] = array[i], array[i - 1]
-    i += 1
+        array[index] = -1
+    if index % 2 != 0:
+        array[index - 1], array[index] = array[index], array[index - 1]
 
 print(array)
