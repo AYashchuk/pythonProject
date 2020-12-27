@@ -29,13 +29,13 @@ class Products:
     def add(self, product):
         self._products.append((len(self._products), product))
 
-    def __repr__(self):
+    def __str__(self):
         res = ''
         for elem in self._products:
             res += f"{elem}"
         return f"{res}"
 
-    def getAnanlitics(self):
+    def get_analytics(self):
         res = {}
         for elem in self._products:
             target_product = elem[1]
@@ -55,8 +55,7 @@ try:
 except:
     print('Entered value inst int type')
 
-i = 0
-while i < count:
+for i in range(0, count):
     print(f"Enter data for {i + 1} product")
     name = input('Enter products name: ')
     cost = input('Enter products cost: ')
@@ -65,4 +64,4 @@ while i < count:
     products.add({"name": name, "cost": cost, "amount": amount, "unit": unit})
     i += 1
 
-print(products.getAnanlitics())
+print(products.get_analytics())
